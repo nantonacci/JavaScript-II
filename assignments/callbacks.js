@@ -89,8 +89,27 @@ contains('knife', items, function(containsItem) {
 
 /* STRETCH PROBLEM */
 
+const duplicateArray = [
+  'Pencil',
+  'Notebook',
+  'yo-yo',
+  'Gum',
+  'Pencil',
+  'Notebook',
+  'yo-yo',
+  'another!'
+];
+
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  let newArr = array.filter(function(item, index) {
+    return array.indexOf(item) >= index;
+  });
+  return cb(newArr);
 }
+
+removeDuplicates(duplicateArray, function(theNewArr) {
+  console.log(theNewArr);
+});
